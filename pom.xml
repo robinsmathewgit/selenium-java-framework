@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>Testing</groupId>
+	<artifactId>AutoFrameworkJava</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
+
+	<properties>
+
+		<suiteFile> ${suite} </suiteFile>
+		<webSite> ${site} </webSite>
+		<testname> ${tname} </testname>
+		<name> ${runby} </name>
+		<email>${mail}</email>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+	</properties>
+
+	<name>Auto Testing Challenge</name>
+
+	<dependencies>		
+
+		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+		<dependency>
+		    <groupId>org.testng</groupId>
+		    <artifactId>testng</artifactId>
+		    <version>7.5</version>
+		    <scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+		    <groupId>org.seleniumhq.selenium</groupId>
+		    <artifactId>selenium-java</artifactId>
+		    <version>4.1.2</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi</artifactId>
+		    <version>5.2.0</version>
+		</dependency>
+				
+		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+		<dependency>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-compiler-plugin</artifactId>
+		    <version>3.10.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
+		<dependency>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-surefire-plugin</artifactId>
+		    <version>3.0.0-M5</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-report-plugin -->
+		<dependency>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-surefire-report-plugin</artifactId>
+		    <version>3.0.0-M5</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-site-plugin -->
+		<dependency>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-site-plugin</artifactId>
+		    <version>3.11.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20211205</version>
+		</dependency>
+         
+		<!-- https://mvnrepository.com/artifact/com.googlecode.combinatoricslib/combinatoricslib -->
+		<dependency>
+		    <groupId>com.googlecode.combinatoricslib</groupId>
+		    <artifactId>combinatoricslib</artifactId>
+		    <version>2.3</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+		<dependency>
+		    <groupId>io.rest-assured</groupId>
+		    <artifactId>rest-assured</artifactId>
+		    <version>4.5.1</version>
+		    <scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-to-slf4j -->
+		<dependency>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-to-slf4j</artifactId>
+		    <version>2.17.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+		<dependency>
+		    <groupId>com.aventstack</groupId>
+		    <artifactId>extentreports</artifactId>
+		    <version>5.0.9</version>
+		</dependency>
+		
+	</dependencies>
+		
+	<build>
+	
+		<sourceDirectory>${project.basedir}\src\main\java</sourceDirectory>
+		<scriptSourceDirectory>${project.basedir}\src\main\scripts</scriptSourceDirectory>
+		<testSourceDirectory>${project.basedir}\src\test\java</testSourceDirectory>
+		<outputDirectory>${project.basedir}\target\classes</outputDirectory>
+		<testOutputDirectory>${project.basedir}\target\test-classes</testOutputDirectory>
+
+		<resources>
+			<resource>
+				<directory>${project.basedir}\src\main\resources</directory>
+			</resource>
+		</resources>
+
+		<testResources>
+			<testResource>
+				<directory>${project.basedir}\src\test\resources</directory>
+			</testResource>
+		</testResources>
+
+		<plugins>
+			
+        	<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+		    	<artifactId>maven-compiler-plugin</artifactId>
+		    	<version>3.10.0</version>
+				<configuration>
+					<compilerVersion>1.8</compilerVersion> 
+          			<source>1.8</source> 
+          			<target>1.8</target> 
+				</configuration>
+			</plugin>
+			
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+		   		<artifactId>maven-surefire-plugin</artifactId>
+		    	<version>3.0.0-M5</version>
+				
+				<configuration>					
+					<systemPropertyVariables>
+            			<propertyName>$webSite</propertyName>
+          			</systemPropertyVariables>
+          			
+					<testFailureIgnore> true </testFailureIgnore>
+			          <suiteXmlFiles>
+			              <suiteXmlFile>${project.basedir}\${suiteFile}</suiteXmlFile>
+			          </suiteXmlFiles>	
+			        
+			        <encoding>UTF-8</encoding>
+					<inputEncoding>UTF-8</inputEncoding>
+					<outputEncoding>UTF-8</outputEncoding>
+					<argLine>-Xms1024m -Xmx1024m -ea -Dfile.encoding=UTF-8</argLine>	
+			          
+				</configuration>
+				
+				<executions>
+					<execution>
+						<phase> test </phase>
+						<goals>
+							<goal> test </goal>
+						</goals>
+					</execution>
+				</executions>        	
+	        </plugin>
+			
+			<plugin>
+	        	<groupId>org.apache.maven.plugins</groupId>
+		   		<artifactId>maven-surefire-report-plugin</artifactId>
+		    	<version>3.0.0-M5</version>	
+				
+				<executions>
+					<execution>
+						<configuration>
+							<alwaysGenerateSurefireReport> true </alwaysGenerateSurefireReport>
+						</configuration>
+						<phase> test </phase>
+					</execution>
+				</executions>        	
+
+			</plugin>
+
+		</plugins>
+	
+	</build>
+	
+  <reporting>
+    
+  	<plugins>
+
+    	<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+    		<artifactId>maven-project-info-reports-plugin</artifactId>
+    		<version>3.2.1</version>
+			<configuration>
+				<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+				<dependencyDetailsEnabled>false</dependencyDetailsEnabled>			
+			</configuration>
+		</plugin>
+
+    	<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-surefire-report-plugin</artifactId>
+		    <version>3.0.0-M5</version>
+		</plugin>
+
+    </plugins>
+  </reporting>
+
+</project>

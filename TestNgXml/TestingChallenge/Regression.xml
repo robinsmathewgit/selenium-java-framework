@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Auto Testing Challenge" parallel="tests" thread-count="10" data-provider-thread-count="15" preserve-order="true">
+
+	<parameter name="webSite" value="http://automationpractice.com/" />
+	<parameter name="deviceHost" value="localhost" />
+	<parameter name="devicePort" value="4444" />
+	<parameter name="driverType" value="Chrome" />
+	
+	<parameter name="testDataFileName" value="Web\Web_TestData.xls" />
+	<parameter name="workSheet" value="Test_Data_Sheet_1" />
+	
+	<parameter name="printconsoleoutput" value="false" />
+	<parameter name="ReuseBrowserSession" value="false" />
+
+	<listeners>
+		<listener class-name="support.EmailReport"></listener>
+		<listener class-name="support.TestListener"></listener>
+	</listeners>
+
+	<test name="Purchase a product" parallel="methods" thread-count="10" preserve-order="true">
+		<classes>
+			<class name="testingChallenge.Tests.ProductPurchase" />
+		</classes>
+	</test> <!-- Test -->
+
+</suite> <!-- Suite -->
