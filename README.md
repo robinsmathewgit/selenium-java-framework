@@ -11,6 +11,7 @@ Before you begin, ensure you have the following tools installed:
 
 ## Project Structure
 
+'''plaintext
 selenium-java-framework
 │
 ├── src
