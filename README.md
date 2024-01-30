@@ -25,7 +25,7 @@ selenium-java-framework
 └── testNgXml
 	├── SmokeTest.xml
 	└── RegressionTest.xml
-
+'''
 
 - src/test: Contains test code.
 - pom.xml: Maven project configuration.
