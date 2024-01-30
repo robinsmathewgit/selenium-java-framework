@@ -1,5 +1,4 @@
-# Selenium Java TestNG Maven Framework - Selenium Java TestNG Project
-
+# Selenium Java TestNG Maven Framework
 This project is a Selenium-based automation framework developed in Java, utilizing TestNG for test execution, Maven for project management and dependency resolution, and Extent Report for detailed test reporting.
 
 ## Prerequisites
